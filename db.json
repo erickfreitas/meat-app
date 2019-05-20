@@ -370,5 +370,49 @@
       "restaurantId": "tasty-treats"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "address": "Travessa Pau-Santo, 28",
+      "number": "22",
+      "optionalAddress": "",
+      "paymentOption": "MON",
+      "orderItems": [
+        {
+          "quantity": 2,
+          "menuId": "zlasagna"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "address": "Avenida Brigadeiro Faria Lima",
+      "number": "22",
+      "optionalAddress": "",
+      "paymentOption": "MON",
+      "orderItems": [
+        {
+          "quantity": 3,
+          "menuId": "capp"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "address": "Travessa Bela Emília",
+      "number": "22",
+      "optionalAddress": "",
+      "paymentOption": "MON",
+      "orderItems": [
+        {
+          "quantity": 2,
+          "menuId": "espreso"
+        },
+        {
+          "quantity": 1,
+          "menuId": "capp"
+        }
+      ],
+      "id": 3
+    }
+  ]
 }
