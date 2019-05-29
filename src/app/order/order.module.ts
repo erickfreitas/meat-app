@@ -6,7 +6,7 @@ import { SharedModule } from "app/shared/shared.module";
 import { Routes, RouterModule } from "@angular/router";
 
 export const ROUTES: Routes = [
-    { path: '', component: OrderComponent }
+    { path: 'order', component: OrderComponent }
 ]
 
 @NgModule({
