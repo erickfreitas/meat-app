@@ -16,6 +16,7 @@ import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/review
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { SharedModule } from './shared/shared.module';
 import { OrderModule } from './order/order.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { OrderModule } from './order/order.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,    
     SharedModule.forRoot(),
     OrderModule,
