@@ -4,6 +4,7 @@ var jsonServer = require("json-server");
 var fs = require("fs");
 var https = require("https");
 var auth_1 = require("./auth");
+var authz_1 = require("./authz");
 var server = jsonServer.create();
 var router = jsonServer.router('db.json');
 var middlewares = jsonServer.defaults();
@@ -18,6 +19,7 @@ server.get('/echo', function (req, res) {
 });
 // Middleware para login
 server.post('/login', auth_1.handleAuthentication);
+server.use('/orders', authz_1.handleAuthorization);
 server.use(function (req, res, next) {
     if (req.method === 'POST') {
         req.body.createdAt = Date.now();
