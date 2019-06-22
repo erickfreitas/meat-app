@@ -1,9 +1,10 @@
 class Order{
-    constructor(
+    constructor(        
         public address: string, 
         public number: number,
         public optionalAddress: string,
         public paymentOption: string,
+        public id?: string,
         public orderItems: OrderItem[] = []){
 
     }

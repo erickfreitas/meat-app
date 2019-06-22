@@ -3,13 +3,14 @@ import { ShoppingCartService } from "app/restaurants/restaurant-detail/shopping-
 import { CartItem } from "app/restaurants/restaurant-detail/shopping-cart/cart-item.model";
 import { Order } from "./order.model";
 import { Observable } from "rxjs/Observable";
-import { Http, Headers, RequestOptions } from "@angular/http/";
+import { HttpClient } from "@angular/common/http/";
 import { MEAT_API } from "app/app.api";
+import 'rxjs/add/operator/map'
 
 @Injectable()
 export class OrderService{
 
-    constructor(private cartService: ShoppingCartService, private http: Http) {
+    constructor(private cartService: ShoppingCartService, private http: HttpClient) {
             
     }
     itemsValue(): number{
@@ -33,15 +34,9 @@ export class OrderService{
     }
 
     checkOrder(order: Order) : Observable<string>{
-        //creating header for request
-        const headers = new Headers();
-        headers.append("Content-type", "application/json");
         //making a POST call and mapping return to json
-        return this.http.post(`${MEAT_API}/orders`, 
-                              JSON.stringify(order),
-                              new RequestOptions({headers: headers}))
-                              .map(response => response.json())
-                              .map(order => order.id)
+        return this.http.post<Order>(`${MEAT_API}/orders`, order)
+                        .map(order => order.id)
     }
 
     clear(){
