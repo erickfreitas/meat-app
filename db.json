@@ -445,6 +445,23 @@
         }
       ],
       "id": 5
+    },
+    {
+      "name": "Erick Freitas Bezerra",
+      "email": "erick@gmail.com",
+      "emailConfirmation": "erick@gmail.com",
+      "address": "Travessa Pau-Santo",
+      "number": "23",
+      "optionalAddress": "",
+      "paymentOption": "MON",
+      "orderItems": [
+        {
+          "quantity": 1,
+          "menuId": "burger"
+        }
+      ],
+      "createdAt": 1562198711027,
+      "id": 6
     }
   ]
 }

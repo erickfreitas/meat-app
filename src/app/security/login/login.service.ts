@@ -6,12 +6,22 @@ import { User } from "./user.model";
 
 @Injectable()
 export class LoginService{
+    
+    user: User
 
     constructor(private httpClient: HttpClient){
+        
+    }
 
+    isLogged(): Boolean{
+        return this.user !== undefined
     }
 
     login(email: string, password: string): Observable<User> {
-        return this.httpClient.post<User>(`${MEAT_API}/login`, {email: email, password: password})
+        return this.httpClient.post<User>(`${MEAT_API}/login`, 
+                                    {email: email, password: password})
+                                    .do(user => this.user = user)
+                                    .do(user => console.log(this))
+
     }
 }

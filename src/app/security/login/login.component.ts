@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validator, Validators} from '@angular/forms'
 import { LoginService } from './login.service';
 import { User } from './user.model';
+import { NotificationService } from 'app/shared/messages/notification.service';
 
 @Component({
   selector: 'mt-login',
@@ -12,7 +13,9 @@ export class LoginComponent implements OnInit {
 
 loginForm: FormGroup
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService) { }
+  constructor(private formBuilder: FormBuilder, 
+              private loginService: LoginService,
+              private notificationService: NotificationService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -23,7 +26,9 @@ loginForm: FormGroup
 
   login(){
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password)
-      .subscribe(user => console.log(user))
+      .subscribe(user => this.notificationService.notify(`Bem vindo ${user.name}!`),
+                response => //response é do tipo HttpErrorResponse
+                this.notificationService.notify(`Dados inválidos`))
   }
 
 }
