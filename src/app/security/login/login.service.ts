@@ -3,17 +3,18 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import { MEAT_API } from "app/app.api";
 import { User } from "./user.model";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class LoginService{
     
     user: User
 
-    constructor(private httpClient: HttpClient){
+    constructor(private httpClient: HttpClient, private router: Router){
         
     }
 
-    isLogged(): Boolean{
+    isLogged(): boolean{
         return this.user !== undefined
     }
 
@@ -23,5 +24,9 @@ export class LoginService{
                                     .do(user => this.user = user)
                                     .do(user => console.log(this))
 
+    }
+
+    handleLogin(path: string){
+        this.router.navigate(['/login', path])
     }
 }
