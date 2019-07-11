@@ -36,11 +36,11 @@ export class OrderService{
         this.cartService.removeItem(item)
     }
 
-    checkOrder(order: Order) : Observable<string>{
+    checkOrder(order: Order): Observable<string>{
         let headers = new HttpHeaders()
-        if(this.loginService.isLogged()){
+        if (this.loginService.isLogged()) {
             headers = headers.set('Authorization', `Bearer ${this.loginService.user.accessToken}`)
-        }              
+        }
         return this.http.post<Order>(`${MEAT_API}/orders`, order, { headers: headers })
                         .map(order => order.id)
     }

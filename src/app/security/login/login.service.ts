@@ -11,6 +11,7 @@ export class LoginService{
     user: User
 
     constructor(private httpClient: HttpClient, private router: Router){
+        // tslint:disable-next-line: no-trailing-whitespace
         
     }
 
@@ -27,6 +28,6 @@ export class LoginService{
     }
 
     handleLogin(path: string){
-        this.router.navigate(['/login', path])
+        this.router.navigate(['/login', btoa(path)])
     }
 }

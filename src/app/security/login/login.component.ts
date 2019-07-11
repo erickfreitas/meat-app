@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       password: this.formBuilder.control('', [Validators.required])
     })
     debugger
-    this.navigateTo = this.activatedRoute.snapshot.params['to'] || '/';
+    this.navigateTo = this.activatedRoute.snapshot.params['to'] || btoa('/');
   }
 
   login(){
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
                   this.notificationService.notify(`Bem vindo ${user.name}!`),
                 response => //response é do tipo HttpErrorResponse
                   this.notificationService.notify(`Dados inválidos`),
-                () => { this.router.navigate([this.navigateTo])})
+                () => { this.router.navigate([atob(this.navigateTo)])})
   }
 
 }
