@@ -22,7 +22,10 @@ export class OrderComponent implements OnInit {
     { label: "Cartão de Débito", value: "DEB"},
     { label: "Cartão Refeição", value: "REF"}
   ]
+
   delivery: number = 8
+
+  orderId: string
 
   constructor(private orderService: OrderService,
               private router: Router,
@@ -75,6 +78,10 @@ export class OrderComponent implements OnInit {
     this.orderService.removeItem(item)
   }
 
+  isOrderCompleted(): boolean{
+    return this,this.orderId != undefined
+  }
+
   checkOrder(order: Order){
     //mapping CartItem to OrderItem
     order.orderItems = this.cartItems()
@@ -82,6 +89,9 @@ export class OrderComponent implements OnInit {
 
     //Sending order to backend
     this.orderService.checkOrder(order)
+      .do((orderId: string) =>{
+        this.orderId = orderId 
+      })
       .subscribe((orderId: string) => {
         console.log(`Compra concluída: ${orderId}.`)
         this.router.navigate(['/order-summary'])
