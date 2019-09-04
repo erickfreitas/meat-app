@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './../security/auth.interceptor';
 import { NgModule, ModuleWithProviders } from "@angular/core";
 import { InputComponent } from "./input/input.component";
 import { RadioComponent } from "./radio/radio.component";
@@ -12,6 +13,7 @@ import { NotificationService } from "./messages/notification.service";
 import { LoginService } from "app/security/login/login.service";
 import { LoggedInGuard } from "app/security/loggeding.guard";
 import { LeaveOrderGuard } from './../order/leave.order.guard';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -46,7 +48,8 @@ export class SharedModule{
                 NotificationService,
                 LoginService,
                 LoggedInGuard,
-                LeaveOrderGuard
+                LeaveOrderGuard,
+                { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
             ]
         }
     }

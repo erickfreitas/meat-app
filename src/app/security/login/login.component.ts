@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
               private loginService: LoginService,
               private notificationService: NotificationService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) {debugger }
+              private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
