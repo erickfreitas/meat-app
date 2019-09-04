@@ -49,7 +49,7 @@ export class SharedModule{
                 LoginService,
                 LoggedInGuard,
                 LeaveOrderGuard,
-                { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+                { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
             ]
         }
     }
