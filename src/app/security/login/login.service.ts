@@ -15,7 +15,7 @@ export class LoginService{
         
     }
 
-    isLogged(): boolean{
+    isLoggedIn(): boolean{
         return this.user !== undefined
     }
 
@@ -23,11 +23,15 @@ export class LoginService{
         return this.httpClient.post<User>(`${MEAT_API}/login`, 
                                     {email: email, password: password})
                                     .do(user => this.user = user)
-                                    .do(user => console.log(this))
+                                    .do(user => console.log(this.user))
 
     }
 
-    handleLogin(path: string){
+    logout(){
+        this.user = undefined
+    }
+
+    handleLogin(path?: string){
         this.router.navigate(['/login', btoa(path)])
     }
 }

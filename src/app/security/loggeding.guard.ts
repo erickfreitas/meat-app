@@ -11,7 +11,7 @@ export class LoggedInGuard implements CanLoad, CanActivate{
     }
 
     checkAuthentication(path: string): boolean{
-        const isLogged: boolean = this.loginService.isLogged()
+        const isLogged: boolean = this.loginService.isLoggedIn()
         if (!isLogged){
             this.loginService.handleLogin(`/${path}`)
         }

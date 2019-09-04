@@ -19,14 +19,13 @@ export class LoginComponent implements OnInit {
               private loginService: LoginService,
               private notificationService: NotificationService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {debugger }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: this.formBuilder.control('', [Validators.required, Validators.email]),
       password: this.formBuilder.control('', [Validators.required])
     })
-    debugger
     this.navigateTo = this.activatedRoute.snapshot.params['to'] || btoa('/');
   }
 
