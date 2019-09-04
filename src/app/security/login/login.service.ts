@@ -1,18 +1,23 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Router, NavigationEnd } from "@angular/router";
+
 import { Observable } from "rxjs/Observable";
+import 'rxjs/add/operator/filter'
+import 'rxjs/add/operator/do'
+
 import { MEAT_API } from "app/app.api";
 import { User } from "./user.model";
-import { Router } from "@angular/router";
 
 @Injectable()
-export class LoginService{
-    
+export class LoginService {
     user: User
+    lastUrl: string
 
     constructor(private httpClient: HttpClient, private router: Router){
-        // tslint:disable-next-line: no-trailing-whitespace
-        
+        this.router.events
+        .filter(e => e instanceof NavigationEnd)
+        .subscribe((e: NavigationEnd) => this.lastUrl =  e.url)
     }
 
     isLoggedIn(): boolean{
@@ -20,18 +25,18 @@ export class LoginService{
     }
 
     login(email: string, password: string): Observable<User> {
-        return this.httpClient.post<User>(`${MEAT_API}/login`, 
+        return this.httpClient.post<User>(`${MEAT_API}/login`,
                                     {email: email, password: password})
                                     .do(user => this.user = user)
                                     .do(user => console.log(this.user))
 
     }
 
-    logout(){
-        this.user = undefined
+    handleLogin(path: string = this.lastUrl) {
+        this.router.navigate(['/login', btoa(path)])
     }
 
-    handleLogin(path?: string){
-        this.router.navigate(['/login', btoa(path)])
+    logout() {
+        this.user = undefined
     }
 }

@@ -42,7 +42,7 @@ import { UserDetailComponent } from './header/user-detail/user-detail.component'
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,    
+    HttpClientModule,
     SharedModule.forRoot(),
     OrderModule,
     RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules}),

@@ -4,12 +4,10 @@
     padding: 15px 15px;
     color: #fff;
   }
-
   .user-menu a{
     color: #fff;
     cursor: pointer
   }
-
   @media (max-width: 991px){
     .navbar-custom-menu {
         display: block;

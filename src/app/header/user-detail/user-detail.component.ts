@@ -1,4 +1,4 @@
-import { LoginService } from 'app/security/login/login.service';
+import { LoginService } from './../../security/login/login.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'app/security/login/user.model';
 
@@ -14,20 +14,19 @@ export class UserDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  user(): User{
-    debugger
+  user(): User {
     return this.loginService.user
   }
 
-  isLoggedIn(): boolean{
+  isLoggedIn(): boolean {
     return this.loginService.isLoggedIn()
   }
 
-  login(){
+  login() {
     this.loginService.handleLogin()
   }
 
-  logout(){
+  logout() {
     this.loginService.logout()
   }
 

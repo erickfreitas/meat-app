@@ -462,6 +462,23 @@
       ],
       "createdAt": 1562198711027,
       "id": 6
+    },
+    {
+      "name": "Erick Freitas Bezerra",
+      "email": "freitas_erick@hotmail.com",
+      "emailConfirmation": "freitas_erick@hotmail.com",
+      "address": "Travessa Pau-Santo",
+      "number": "34",
+      "optionalAddress": "",
+      "paymentOption": "MON",
+      "orderItems": [
+        {
+          "quantity": 1,
+          "menuId": "sunday"
+        }
+      ],
+      "createdAt": 1567348144648,
+      "id": 7
     }
   ]
 }
