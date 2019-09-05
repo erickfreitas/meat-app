@@ -1,8 +1,4 @@
 import { ApplicationErrorHandler } from './app.error-handler';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, PreloadingStrategy, PreloadAllModules } from '@angular/router';
 import {ROUTES} from './app.route';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,11 +13,19 @@ import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/review
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { SharedModule } from './shared/shared.module';
 import { OrderModule } from './order/order.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { LoginComponent } from './security/login/login.component';
 import { UserDetailComponent } from './header/user-detail/user-detail.component';
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, PreloadingStrategy, PreloadAllModules } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LocationStrategy, HashLocationStrategy, registerLocaleData } from '@angular/common';
+
+import localePt from '@angular/common/locales/pt'
+registerLocaleData(localePt, 'pt')
 
 @NgModule({
   declarations: [
@@ -49,7 +53,7 @@ import { UserDetailComponent } from './header/user-detail/user-detail.component'
     OrderModule,
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},
-              {provide: LOCALE_ID, useValue: 'pt-BR'},
+              {provide: LOCALE_ID, useValue: 'pt'},
               {provide: ErrorHandler, useClass: ApplicationErrorHandler}
             ],
   bootstrap: [AppComponent]

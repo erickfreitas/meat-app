@@ -12,8 +12,6 @@ export class AuthInterceptor implements HttpInterceptor{
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
         const loginService = this.injector.get(LoginService)
-        console.log(request)
-        let headers = new HttpHeaders()
         if (loginService.isLoggedIn()) {
             //objeto request é imutavel
             const authRequest = request.clone({ setHeaders: {'Authorization': `Bearer ${loginService.user.accessToken}`}})
